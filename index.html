@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocational Training College</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Vocational College</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="auth.html?type=login" class="nav-link login-btn" id="loginBtn">Login</a>
+                <a href="auth.html?type=register" class="nav-link register-btn" id="registerBtn">Register</a>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span id="userName">Welcome, User</span>
+                    <a href="dashboard.html" class="nav-link">My Profile</a>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Vocational Training College</h1>
+            <p>Gain practical skills for today's job market with our hands-on training programs</p>
+            <div class="hero-buttons">
+                <a href="auth.html?type=register" class="btn btn-primary">Get Started</a>
+                <a href="#courses" class="btn btn-secondary">View Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Our College?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="fa-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Practical Skills</h3>
+                    <p>Hands-on training with industry-standard equipment and real-world projects that prepare you for actual job requirements</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fa-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from experienced professionals with years of industry experience and proven teaching methodologies</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fa-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Job Placement</h3>
+                    <p>90% job placement rate with comprehensive career services, resume building, and interview preparation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fa-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Flexible Schedules</h3>
+                    <p>Full-time, part-time, evening, and weekend classes designed to fit your busy lifestyle and commitments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fa-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Hands-On Learning</h3>
+                    <p>Learn by doing with practical labs, workshops, and real projects that build your portfolio and confidence</p>
+                </div>
+                <div class="feature-card">
+                    <div class="fa-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Certified Programs</h3>
+                    <p>Industry-recognized certifications that boost your career prospects and validate your skills to employers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <h2>Our Courses</h2>
+            <p class="courses-subtitle">Choose from 25+ professional courses designed to launch your career</p>
+            
+            <!-- Course Search -->
+            <div class="course-search">
+                <input type="text" id="courseSearch" placeholder="Search courses...">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <!-- Course Categories -->
+            <div class="course-categories">
+                <button class="category-btn active" data-category="all">All Courses</button>
+                <button class="category-btn" data-category="programming">Programming</button>
+                <button class="category-btn" data-category="design">Design</button>
+                <button class="category-btn" data-category="marketing">Marketing</button>
+                <button class="category-btn" data-category="data">Data Science</button>
+                <button class="category-btn" data-category="business">Business</button>
+                <button class="category-btn" data-category="cloud">Cloud</button>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Courses will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Our College</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Path to Career Success</h3>
+                    <p>We are dedicated to providing high-quality vocational training that prepares students for real-world careers. Our programs are designed in collaboration with industry experts to ensure you learn the most relevant skills.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h4>500+</h4>
+                            <p>Graduates</p>
+                        </div>
+                        <div class="stat">
+                            <h4>95%</h4>
+                            <p>Employment Rate</p>
+                        </div>
+                        <div class="stat">
+                            <h4>25+</h4>
+                            <p>Courses</p>
+                        </div>
+                        <div class="stat">
+                            <h4>2</h4>
+                            <p>Course Limit Per Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Students Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The web development course changed my career completely. I went from zero coding experience to landing a job in 6 months!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Sarah Johnson</strong>
+                        <span>Web Developer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The practical approach and industry-relevant skills helped me start my own digital marketing agency."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Mike Chen</strong>
+                        <span>Digital Marketer</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The flexible schedule allowed me to learn while working full-time. The instructors were incredibly supportive."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Emily Rodriguez</strong>
+                        <span>Graphic Designer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join thousands of students who have transformed their careers with our vocational training programs.</p>
+                <div class="cta-buttons">
+                    <a href="auth.html?type=register" class="btn btn-primary">Get Started Today</a>
+                    <a href="#courses" class="btn btn-outline">Browse Courses</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Vocational College</h3>
+                    <p>Building careers through practical education</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#courses">Courses</a>
+                    <a href="#about">About</a>
+                    <a href="auth.html?type=login">Login</a>
+                    <a href="auth.html?type=register">Register</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> omarimawaya02@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +254 758 558 755</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mkongan-Road, Kwale 80403</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Student Portal</a>
+                    <a href="#">Career Services</a>
+                    <a href="#">Contact Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vocational Training College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="course-modal" id="loginModal">
+        <div class="modal-content" id="modalContent">
+            <!-- Modal content will be dynamically loaded -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <style>
+        /* Additional Styles for New Sections */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .testimonial-author strong {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author span {
+            color: #007bff;
+            font-size: 0.9rem;
+        }
+
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #007bff;
+        }
+
+        .footer-section p i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation active state */
+        .nav-link.active {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-content p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .features h2,
+            .courses h2,
+            .about h2,
+            .testimonials h2,
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+    <script>
+        // Add active state to navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update navigation based on login state
+            userManager.updateNavigation();
+            
+            // Add active class to current section in navigation
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            
+            function updateActiveNavLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNavLink);
+            
+        
+            updateActiveNavLink();
+        });
+    </script>
+</body>
+</html>

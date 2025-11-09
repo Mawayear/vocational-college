@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register - Vocational College</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>Vocational College</h2>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#courses" class="nav-link">Courses</a>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span id="userName">Welcome, User</span>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 id="authTitle">Login</h2>
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <form id="authForm" class="auth-form">
+                <!-- Register Fields -->
+                <div class="form-group" id="nameField" style="display: none;">
+                    <label>Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group" id="phoneField" style="display: none;">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="form-group" id="interestField" style="display: none;">
+                    <label>Area of Interest *</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select your area of interest</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="graphic-design">Graphic Design</option>
+                        <option value="data-science">Data Science & Analytics</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="mobile-development">Mobile App Development</option>
+                        <option value="ui-ux">UI/UX Design</option>
+                        <option value="cloud-computing">Cloud Computing</option>
+                        <option value="programming">Programming & Coding</option>
+                        <option value="video-editing">Video Editing & Production</option>
+                        <option value="photography">Photography</option>
+                        <option value="content-writing">Content Writing & SEO</option>
+                        <option value="network-admin">Network Administration</option>
+                        <option value="ecommerce">E-commerce Management</option>
+                        <option value="project-management">Project Management</option>
+                        <option value="ai-ml">Artificial Intelligence & ML</option>
+                        <option value="game-development">Game Development</option>
+                        <option value="devops">DevOps Engineering</option>
+                        <option value="business-analytics">Business Analytics</option>
+                        <option value="technical-writing">Technical Writing</option>
+                        <option value="digital-illustration">Digital Illustration</option>
+                    </select>
+                </div>
+                
+                <!-- Common Fields -->
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-group" id="confirmPasswordField" style="display: none;">
+                    <label>Confirm Password *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary auth-btn" id="submitBtn">
+                    Login
+                </button>
+            </form>
+            
+            <p class="auth-link" id="authLink">
+                Don't have an account? <a href="?type=register" id="switchLink">Register here</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const authType = urlParams.get('type') || 'login';
+
+        // DOM Elements
+        const authTitle = document.getElementById('authTitle');
+        const authForm = document.getElementById('authForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const authLink = document.getElementById('authLink');
+        const switchLink = document.getElementById('switchLink');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Fields for register form
+        const nameField = document.getElementById('nameField');
+        const phoneField = document.getElementById('phoneField');
+        const interestField = document.getElementById('interestField');
+        const confirmPasswordField = document.getElementById('confirmPasswordField');
+
+        // Initialize form based on type
+        function initAuthForm(type) {
+            if (type === 'register') {
+                authTitle.textContent = 'Create Your Account';
+                submitBtn.textContent = 'Register';
+                authLink.innerHTML = 'Already have an account? <a href="?type=login" id="switchLink">Login here</a>';
+                
+                // Show additional fields
+                nameField.style.display = 'flex';
+                phoneField.style.display = 'flex';
+                interestField.style.display = 'flex';
+                confirmPasswordField.style.display = 'flex';
+                
+            } else {
+                authTitle.textContent = 'Login to Your Account';
+                submitBtn.textContent = 'Login';
+                authLink.innerHTML = 'Don\'t have an account? <a href="?type=register" id="switchLink">Register here</a>';
+                
+                // Hide additional fields
+                nameField.style.display = 'none';
+                phoneField.style.display = 'none';
+                interestField.style.display = 'none';
+                confirmPasswordField.style.display = 'none';
+            }
+            
+            // Update switch link event listener
+            const newSwitchLink = document.getElementById('switchLink');
+            if (newSwitchLink) {
+                newSwitchLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const newType = type === 'login' ? 'register' : 'login';
+                    window.location.href = `auth.html?type=${newType}`;
+                });
+            }
+        }
+
+        // Form submission
+        authForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (authType === 'register') {
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const interest = document.getElementById('interest').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                // Validation
+                if (password !== confirmPassword) {
+                    showError('Passwords do not match');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    showError('Password must be at least 6 characters long');
+                    return;
+                }
+                
+                if (!name || !email || !password || !interest) {
+                    showError('Please fill in all required fields');
+                    return;
+                }
+                
+                // Register user
+                const result = userManager.register({
+                    name,
+                    email,
+                    password,
+                    phone,
+                    interest
+                });
+                
+                if (result.success) {
+                    // Auto login after registration - redirect to dashboard
+                    showSuccess('Account created successfully! Redirecting to dashboard...');
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    showError(result.message);
+                }
+                
+            } else {
+                // Login user
+                const result = userManager.login(email, password);
+                
+                if (result.success) {
+                    showSuccess('Login successful! Redirecting to dashboard...');
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    showError(result.message);
+                }
+            }
+        });
+
+        // Show error message
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            errorMessage.style.background = '#f8d7da';
+            errorMessage.style.color = '#721c24';
+            errorMessage.style.border = '1px solid #f5c6cb';
+            
+            // Hide error after 5 seconds
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            errorMessage.style.background = '#d4edda';
+            errorMessage.style.color = '#155724';
+            errorMessage.style.border = '1px solid #c3e6cb';
+        }
+
+        // Initialize form
+        initAuthForm(authType);
+
+        // Update navigation on auth page
+        userManager.updateNavigation();
+    </script>
+</body>
+</html>
